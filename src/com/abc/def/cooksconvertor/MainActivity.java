@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.EditText;
+import android.text.TextWatcher;
+import android.text.Editable;
 import java.lang.Double;
 import java.text.DecimalFormat;
 
@@ -55,7 +58,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// Value input
-        TextView inputField = (TextView) findViewById(R.id.inputInFeet);
+		EditText inputField = (EditText) findViewById(R.id.inputInFeet);
         inputField.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -68,7 +71,25 @@ public class MainActivity extends Activity {
             		convertValue();
             	}
            }
-        }); 		
+        }); 
+        
+        inputField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable  s) {
+            	if (s.length() > 0) {          		
+            		inputValue  = Double.parseDouble(s.toString());
+            		convertValue();
+            	}            	         	
+            }
+        });            
 	
         // Units input
         Spinner spinner = (Spinner) findViewById(R.id.unitsSelector);
