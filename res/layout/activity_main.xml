@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <EditText
-        android:id="@+id/inputInFeet"
+        android:id="@+id/inputUnits"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/unitsSelector"
@@ -24,7 +24,7 @@
         android:id="@+id/unitsSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputInFeet"
+        android:layout_below="@+id/inputUnits"
         android:layout_centerHorizontal="true"
         android:entries="@array/units_list"
         android:prompt="@string/helper_units_text" />

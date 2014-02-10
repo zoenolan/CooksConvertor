@@ -33,7 +33,7 @@ public final class R {
         public static final int action_settings=0x7f090005;
         public static final int conversionDirection=0x7f090004;
         public static final int imageView1=0x7f090002;
-        public static final int inputInFeet=0x7f090000;
+        public static final int inputUnits=0x7f090000;
         public static final int resultsView=0x7f090003;
         public static final int unitsSelector=0x7f090001;
     }

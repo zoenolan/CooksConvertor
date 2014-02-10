@@ -103,12 +103,12 @@ public class MainActivity extends Activity {
 		}		
 		
 		// Value input
-		EditText inputField = (EditText) findViewById(R.id.inputInFeet);
+		EditText inputField = (EditText) findViewById(R.id.inputUnits);
         inputField.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-            	TextView inputData = (TextView) findViewById(R.id.inputInFeet);
+            	TextView inputData = (TextView) findViewById(R.id.inputUnits);
             	String text = inputData.getText().toString();
 
             	if (text.length() > 0) {          		
