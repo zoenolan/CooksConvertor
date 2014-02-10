@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.SpinnerAdapter;
 import android.text.TextWatcher;
 import android.text.Editable;
 import java.lang.Double;
@@ -95,6 +95,18 @@ public class MainActivity extends Activity {
 	protected void setDropdown() {
 		
 		
+		if (imperialToMetric) {
+			
+		} else {
+			
+		}
+		
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, list);
+		SpinnerAdapter adapter;
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Spinner spinner = (Spinner) findViewById(R.id.unitsSelector);
+		spinner.setAdapter(adapter);
 	}
 
 	@Override

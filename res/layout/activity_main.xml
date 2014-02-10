@@ -45,7 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
         android:layout_alignParentTop="true"
-        android:entries="@array/conversion_direction_list" />
+        android:entries="@array/conversion_direction_list"
+        android:prompt="@string/helper_mode_text" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -54,6 +55,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/conversionDirection"
         android:layout_marginTop="46dp"
+        android:contentDescription="@string/image_name"
         android:src="@drawable/scales" />
 
 </RelativeLayout>

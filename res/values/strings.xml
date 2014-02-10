@@ -5,7 +5,9 @@
     <string name="action_settings">Settings</string>
     <string name="helper_value_text">This converts between metric and imperial. Enter the value to convert</string>
     <string name="helper_units_text">and then select the units</string>
+    <string name="helper_mode_text">Select which units to convert from</string>
     <string name="output_text"></string>
+    <string name="image_name">Kitchen Scales</string>
     <string-array name="units_list">
         <item >Fahrenheit</item>
         <item >fl oz</item>
