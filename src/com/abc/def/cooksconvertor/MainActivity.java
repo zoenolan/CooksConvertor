@@ -51,47 +51,45 @@ public class MainActivity extends Activity {
 				break;      				
 			}		
 		
-		
+			// Do the conversion
 			double convertedValue = 0;
-			String outputUnits = "Metres";
+			String outputUnits = "celcius";
 		
 			switch (inputUnits) {
 			case FANHRENHEIT:
-				convertedValue = inputValue * 0.3048;
+				convertedValue =  (5.0 / 9.0) * (inputValue - 32);
 				outputUnits = "celcius";
 				break;
 
 			case FLOZ:
-				convertedValue = inputValue * (1/0.3048);
+				convertedValue = inputValue / 0.035195;
 				outputUnits = "ml";
 				break;
 				
 			case OZ:
-				convertedValue = inputValue * (1/2.2);
+				convertedValue = inputValue / 0.035274;
 				outputUnits = "g";
 				break;
 				
 			case CELSIUS:
-				convertedValue = inputValue * 0.3048;
+				convertedValue = (9.0 / 5.0) * (inputValue + 32);
 				outputUnits = "fahrenheit";
 				break;
 
 			case ML:
-				convertedValue = inputValue * (1/0.3048);
+				convertedValue = inputValue * 0.035195;
 				outputUnits = "fl oz";
 				break;
 				
 			case GRAMMES:
-				convertedValue = inputValue * (1/2.2);
+				convertedValue = inputValue * 0.035274;
 				outputUnits = "oz";
 				break;      							
 			}		
-		
-			if (convertedValue != 0) {
-	        	DecimalFormat twoDForm = new DecimalFormat("#.##");                	
-	        	TextView result = (TextView) findViewById(R.id.resultsView);
-	            result.setText("is " + twoDForm.format(convertedValue) + " " + outputUnits);							
-			}	
+
+        	DecimalFormat twoDForm = new DecimalFormat("#.##");                	
+        	TextView result = (TextView) findViewById(R.id.resultsView);
+            result.setText("is " + twoDForm.format(convertedValue) + " " + outputUnits);							
 	}
 
 	@Override
@@ -144,7 +142,7 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-      			position = unitPosition;
+            	unitPosition = position;
       			
       			convertValue();
             }
@@ -160,28 +158,16 @@ public class MainActivity extends Activity {
         directionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-            	//ArrayAdapter<String> unitsAdapter;
-            	//Spinner spinner = (Spinner) findViewById(R.id.unitsSelector);
-            	
+            {           	
        			switch (position) {
       			case 0:
-      				imperialToMetric = true;   				
-      				
-      				//unitsAdapter = new ArrayAdapter<String>(this, R.array.units_list, spinner);
-      				
+      				imperialToMetric = true;   				     				
       				break;
 
       			case 1:
-      				imperialToMetric = false;
-      				
-      				//unitsAdapter = new ArrayAdapter<String>(this, R.array.metric_units_list, spinner);
-      				
+      				imperialToMetric = false;      				
       				break;  				
       			}
-
-      			// set the spinner to the correct set of units
-       			//spinner.setAdapter(unitsAdapter);
       			
       			// and force the values to be converted
       			convertValue();      			
