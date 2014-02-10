@@ -91,6 +91,11 @@ public class MainActivity extends Activity {
         	TextView result = (TextView) findViewById(R.id.resultsView);
             result.setText("is " + twoDForm.format(convertedValue) + " " + outputUnits);							
 	}
+	
+	protected void setDropdown() {
+		
+		
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +105,10 @@ public class MainActivity extends Activity {
 		// Check for previously saved state
 		if (savedInstanceState != null) {
 			imperialToMetric  = savedInstanceState.getBoolean(UNITS_KEY);
-		}		
+		}
+		
+		// Force the list to be updated
+		setDropdown();
 		
 		// Value input
 		EditText inputField = (EditText) findViewById(R.id.inputUnits);
@@ -168,6 +176,9 @@ public class MainActivity extends Activity {
       				imperialToMetric = false;      				
       				break;  				
       			}
+       			
+       			// set the dropdown
+       			setDropdown();
       			
       			// and force the values to be converted
       			convertValue();      			
