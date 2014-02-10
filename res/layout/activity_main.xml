@@ -40,7 +40,7 @@
         android:text="@string/output_text" />
 
     <Spinner
-        android:id="@+id/ConversionDirection"
+        android:id="@+id/conversionDirection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/ConversionDirection"
+        android:layout_alignTop="@+id/conversionDirection"
         android:layout_marginTop="46dp"
         android:src="@drawable/scales" />
 

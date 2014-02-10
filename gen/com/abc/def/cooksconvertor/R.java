@@ -9,7 +9,8 @@ package com.abc.def.cooksconvertor;
 
 public final class R {
     public static final class array {
-        public static final int conversion_direction_list=0x7f060001;
+        public static final int conversion_direction_list=0x7f060002;
+        public static final int metric_units_list=0x7f060001;
         public static final int units_list=0x7f060000;
     }
     public static final class attr {
@@ -29,8 +30,8 @@ public final class R {
         public static final int scales=0x7f020001;
     }
     public static final class id {
-        public static final int ConversionDirection=0x7f090004;
         public static final int action_settings=0x7f090005;
+        public static final int conversionDirection=0x7f090004;
         public static final int imageView1=0x7f090002;
         public static final int inputInFeet=0x7f090000;
         public static final int resultsView=0x7f090003;

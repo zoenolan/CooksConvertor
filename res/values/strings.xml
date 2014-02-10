@@ -7,11 +7,15 @@
     <string name="helper_units_text">and then select the units</string>
     <string name="output_text"></string>
     <string-array name="units_list">
-        <item >Feet</item>
-        <item >Metres</item>
-        <item >Pounds</item>
-        <item >Kilogrammes</item>
+        <item >Fahrenheit</item>
+        <item >fl oz</item>
+        <item >oz</item>
     </string-array>
+    <string-array name="metric_units_list">
+        <item >Celcius</item>
+        <item >ml</item>
+        <item >g</item>
+    </string-array>    
     <string-array name="conversion_direction_list">
         <item >Imperial to Metric</item>
         <item >Metric to Imperial</item>

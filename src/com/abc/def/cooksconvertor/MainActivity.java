@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
@@ -14,36 +15,76 @@ import java.lang.Double;
 import java.text.DecimalFormat;
 
 public class MainActivity extends Activity {
-	public enum UnitsToConvert {FEET, METRES, POUNDS, KILOGRAMMES};
+	public enum UnitsToConvert {FANHRENHEIT, FLOZ, OZ, CELSIUS, ML, GRAMMES};
 	
+	private static final String UNITS_KEY = "unitsMode";	
+	
+	int			   unitPosition     = 0;
 	double         inputValue       = 0;
-	UnitsToConvert inputUnits       = UnitsToConvert.FEET;
+	UnitsToConvert inputUnits       = UnitsToConvert.FANHRENHEIT;
 	boolean        imperialToMetric = true;
 	
 	protected void convertValue() {
+			switch (unitPosition) {
+			case 0:
+				if (imperialToMetric) {
+					inputUnits = UnitsToConvert.FANHRENHEIT;
+				} else {
+					inputUnits = UnitsToConvert.CELSIUS;					
+				}
+				break;
+
+			case 1:
+				if (imperialToMetric) {
+					inputUnits = UnitsToConvert.FLOZ;
+				} else {
+					inputUnits = UnitsToConvert.ML;					
+				}
+				break;
+				
+			case 2:
+				if (imperialToMetric) {
+					inputUnits = UnitsToConvert.OZ;
+				} else {
+					inputUnits = UnitsToConvert.GRAMMES;					
+				}
+				break;      				
+			}		
+		
+		
 			double convertedValue = 0;
 			String outputUnits = "Metres";
 		
 			switch (inputUnits) {
-			case FEET:
+			case FANHRENHEIT:
 				convertedValue = inputValue * 0.3048;
-				outputUnits = "metres";
+				outputUnits = "celcius";
 				break;
 
-			case METRES:
+			case FLOZ:
 				convertedValue = inputValue * (1/0.3048);
-				outputUnits = "feet";
+				outputUnits = "ml";
 				break;
 				
-			case POUNDS:
+			case OZ:
 				convertedValue = inputValue * (1/2.2);
-				outputUnits = "kilogrammes";
+				outputUnits = "g";
 				break;
 				
-			case KILOGRAMMES:
-				convertedValue = inputValue * 2.2;
-				outputUnits = "pounds";
-				break;        							
+			case CELSIUS:
+				convertedValue = inputValue * 0.3048;
+				outputUnits = "fahrenheit";
+				break;
+
+			case ML:
+				convertedValue = inputValue * (1/0.3048);
+				outputUnits = "fl oz";
+				break;
+				
+			case GRAMMES:
+				convertedValue = inputValue * (1/2.2);
+				outputUnits = "oz";
+				break;      							
 			}		
 		
 			if (convertedValue != 0) {
@@ -57,6 +98,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// Check for previously saved state
+		if (savedInstanceState != null) {
+			imperialToMetric  = savedInstanceState.getBoolean(UNITS_KEY);
+		}		
 		
 		// Value input
 		EditText inputField = (EditText) findViewById(R.id.inputInFeet);
@@ -98,33 +144,54 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-      			switch (position) {
+      			position = unitPosition;
+      			
+      			convertValue();
+            }
+        
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {        
+            }            
+
+        });
+        
+        // Units type
+        Spinner directionSpinner = (Spinner) findViewById(R.id.conversionDirection);
+        directionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+            	//ArrayAdapter<String> unitsAdapter;
+            	//Spinner spinner = (Spinner) findViewById(R.id.unitsSelector);
+            	
+       			switch (position) {
       			case 0:
-      				inputUnits = UnitsToConvert.FEET;
+      				imperialToMetric = true;   				
+      				
+      				//unitsAdapter = new ArrayAdapter<String>(this, R.array.units_list, spinner);
+      				
       				break;
 
       			case 1:
-      				inputUnits = UnitsToConvert.METRES;
-      				break;
+      				imperialToMetric = false;
       				
-      			case 2:
-      				inputUnits = UnitsToConvert.POUNDS;
-      				break;
+      				//unitsAdapter = new ArrayAdapter<String>(this, R.array.metric_units_list, spinner);
       				
-      			case 3:
-      				inputUnits = UnitsToConvert.KILOGRAMMES;
-      				break;        				
-      				
+      				break;  				
       			}
+
+      			// set the spinner to the correct set of units
+       			//spinner.setAdapter(unitsAdapter);
       			
-      			convertValue();
+      			// and force the values to be converted
+      			convertValue();      			
             }
             
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {        
             }            
 
-        });       
+        });          
 	}
 
 	@Override
@@ -133,6 +200,11 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle savedInstanceState) {
+		savedInstanceState.putBoolean(UNITS_KEY, imperialToMetric);
+	}	
 
 }
 
