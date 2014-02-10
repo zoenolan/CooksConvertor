@@ -8,42 +8,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/inputInFeet"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/unitsSelector"
-        android:text="@string/helper_value_text" />
-
     <EditText
         android:id="@+id/inputInFeet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/unitsSelector"
-        android:layout_alignRight="@+id/unitsSelector"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/imageView1"
         android:ems="10"
         android:inputType="numberDecimal" >
 
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/inputInFeet"
-        android:layout_below="@+id/inputInFeet"
-        android:layout_marginTop="16dp"
-        android:text="@string/helper_units_text" />
-
     <Spinner
         android:id="@+id/unitsSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/inputInFeet"
         android:layout_centerHorizontal="true"
         android:entries="@array/units_list"
         android:prompt="@string/helper_units_text" />
@@ -57,5 +38,22 @@
         android:layout_below="@+id/unitsSelector"
         android:layout_marginTop="15dp"
         android:text="@string/output_text" />
+
+    <Spinner
+        android:id="@+id/ConversionDirection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignParentTop="true"
+        android:entries="@array/conversion_direction_list" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/ConversionDirection"
+        android:layout_marginTop="46dp"
+        android:src="@drawable/scales" />
 
 </RelativeLayout>

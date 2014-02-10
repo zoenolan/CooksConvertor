@@ -12,5 +12,8 @@
         <item >Pounds</item>
         <item >Kilogrammes</item>
     </string-array>
-
+    <string-array name="conversion_direction_list">
+        <item >Imperial to Metric</item>
+        <item >Metric to Imperial</item>
+    </string-array>
 </resources>

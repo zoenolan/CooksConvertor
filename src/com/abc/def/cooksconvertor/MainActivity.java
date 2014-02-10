@@ -16,8 +16,9 @@ import java.text.DecimalFormat;
 public class MainActivity extends Activity {
 	public enum UnitsToConvert {FEET, METRES, POUNDS, KILOGRAMMES};
 	
-	double         inputValue = 0;
-	UnitsToConvert inputUnits = UnitsToConvert.FEET;
+	double         inputValue       = 0;
+	UnitsToConvert inputUnits       = UnitsToConvert.FEET;
+	boolean        imperialToMetric = true;
 	
 	protected void convertValue() {
 			double convertedValue = 0;
